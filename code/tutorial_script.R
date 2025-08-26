@@ -17,3 +17,5 @@ x <- c(1, 3, 4)
 ## unfold sections with `Alt + Shift + O`
 
 y <- seq(0, 100, by = 1)
+
+z <- c(5, 6, 7)

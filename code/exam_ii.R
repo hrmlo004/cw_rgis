@@ -69,9 +69,9 @@ ggplot() +
 
 (sf_site_four_proj <- st_transform(sf_site_four,
                                   crs = 32617))
-st_length(sf_site_four_proj)
+st_distance(sf_site_four_proj)
 
-# ENTER YOUR ANSWER HERE: "0"
+# ENTER YOUR ANSWER HERE: "64331.89" meters
 
 
 # raster data analysis ----------------------------------------------------
@@ -88,6 +88,8 @@ st_length(sf_site_four_proj)
 # Load this raster as `spr_land` and display the unique land-cover codes it contains.
 
 (spr_land <- rast(here("data/spr_land_reclass.tif")))
+
+unique(spr_land)
 
 # Q7. 
 # Reclassify the raster `spr_land` to create a new raster object `spr_crop` 
@@ -165,7 +167,7 @@ sf_buff_proj <- sf_site_four_proj %>% st_buffer(dist = 3000)
 
 (spr_crop_proj <- project(x = spr_crop_four,
                               y = "EPSG:32617",
-                              method = "bilinear"))
+                              method = "near"))
 
 # Q14. Create a map displaying the projected cropland raster (`spr_crop_proj`) 
 # with 3-km site buffers (`sf_buff_proj`) overlaid.
